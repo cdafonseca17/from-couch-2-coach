@@ -1,1 +1,23 @@
 // Specific CSS for your home-page
+.banner {
+  background-size: cover;
+  background-position: top;
+  padding: 150px 0;
+  height: 500px;
+  position: relative;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), asset-url('home_background.jpg');;
+}
+
+.banner-form {
+  position: absolute;
+  margin: auto 0;
+  width: 350px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 20px;
+  opacity: 70%;
+}
+
+.banner-form h2 {
+  font-size: 25px;
+}

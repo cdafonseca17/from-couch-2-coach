@@ -1,2 +1,26 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="banner">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6 col-lg-4">
+        <form class="banner-form">
+          <h2 class="text-left mb-3">Find a class right now</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="class-category">Class category</label>
+              <input type="text" class="form-control" id="class-category" placeholder="Spinning">
+            </div>
+            <div class="form-group">
+              <label for="time-slot">When do you want to train?</label>
+              <select id="time-slot" class="form-control">
+                <option value="">Morning</option>
+                <option value="">Afternoon</option>
+                <option value="">Evening</option>
+              </select>
+            </div>
+              <input type="submit" value="Search" class="btn btn-primary btn-lg w-100">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
