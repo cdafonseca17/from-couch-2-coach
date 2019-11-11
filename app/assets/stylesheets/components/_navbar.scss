@@ -12,7 +12,10 @@
 }
 
 .navbar {
-    background-color: #47555E;
+    // background-color: #47555E;
+    background: rgba(71, 85, 94, .7);
     border-color: #47555E;
     // opacity: 70%;
+    position: absolute;
+    width: 100%;
 }
