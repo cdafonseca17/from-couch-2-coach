@@ -1,5 +1,5 @@
 class RemoveDateFromAppointments < ActiveRecord::Migration[5.2]
   def change
-    remove_column :appointments, :data, :date
+    remove_column :appointments, :date, :date
   end
 end
