@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   validates :username, uniqueness: true
   validates :password, length: { within: 8..40 }
-  validates :email, format: { with: /\A.*@.*\.com\z/ }
-  validates :phone_number, numericality: true, length: { minimum: 10, maximum: 15 }
+  validates :email, presence: true
+  validates :phone_number, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :city, presence: true
