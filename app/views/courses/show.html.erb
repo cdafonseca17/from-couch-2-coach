@@ -1,28 +1,67 @@
-<h1>Courses#show</h1>
-<p>Find me in app/views/courses/show.html.erb</p>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1567660444666-aed93ec8aa57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1780&q=80)">
+  <h1><%= @course.name.capitalize %></h1>
+</div>
 
-Name: <%= @course.name %>
-Category: <%= @course.category %>
-Description: <%= @course.description %>
-Address: <%= @course.address %>
+<div class="container">
+
+<div class="d-flex justify-content-between py-5">
+  <div>
+    <div class="pb-4">
+      Course: <%= @course.category.capitalize %>
+    </div>
+    <div class="pb-4">
+      <h4>What will we do?</h4>
+      <%= @course.description %>
+    </div>
+    <div>
+      <h4>Where will we meet?</h4>
+       <%= @course.address %>
+    </div>
+  </div>
+  <div class="text-right">
+    <div class="pb-3">
+      <% total_stars = @course.reviews.map { |review| review.stars }   %>
+      <% @average_rating = total_stars.sum / total_stars.count %>
+      <% counter = 0 %>
+      <% 5.times do %>
+        <i class="fa <%= @average_rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
+        <% counter += 1 %>
+      <% end %>
+      (<%= Review.count %> reviews)
+    </div>
+    <div class="pb-3">
+      [Price]
+    </div>
+    <div>
+      <button class="btn btn-secondary btn-block">Book</button>
+    </div>
+  </div>
+</div>
+
+  <div class="card-product mb-5">
+    <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=635&q=80" />
+    <div class="card-product-infos">
+      <h2>Teacher: [name]</h2>
+      <p>[description]</p>
+      <p>[city]</p>
+    </div>
+  </div>
 
 
-<h3><%= link_to "Edit", edit_course_path(@course) %></h3>
-<h3><%= link_to "Delete", course_path(@course),
-      method: :delete,
-      data: { confirm: "Are you sure?" } %></h3>
+  <div>
+    <h4>All reviews</h4>
 
-<% total_stars = @course.reviews.map { |review| review.stars }   %>
-<% @average_rating = total_stars.sum / total_stars.count %>
-<h3>Average Rating: <%= @average_rating %> </h3>
 
-<h3>Reviews</h3>
+
+
+
   <% if @course.reviews.empty? %>
     <p>Be the first to let a review</p>
   <% else %>
     <ul class="list-group">
       <% @course.reviews.each do |review| %>
         <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= review.description %>
           <span class="badge badge-primary badge-pill">
             <% counter = 0 %>
             <% 5.times do %>
@@ -30,13 +69,32 @@ Address: <%= @course.address %>
               <% counter += 1 %>
             <% end %>
           </span>
-          <%= review.description %>
+
         </li>
       <% end %>
     </ul>
   <% end %>
 
+  </div>
+
+
+
+
+
+</div>
+
+
+
   <!-- %= render "reviews/new", course: @course, review: @review %> -->
 
 </div>
+
+
+
+</div>
+
+<h3><%= link_to "Edit", edit_course_path(@course) %></h3>
+<h3><%= link_to "Delete", course_path(@course),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %></h3>
 

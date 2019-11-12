@@ -10,6 +10,30 @@ require 'faker'
 
 puts 'creating seeds'
 
+User.create(
+  username: 'cdafonseca',
+  email: 'dafonseca.ca@gmail.com',
+  password: '12345678',
+  phone_number: Faker::Company.duns_number,
+  user_type: "trainer",
+  first_name: "Caroline",
+  last_name: "Da Fonseca",
+  city: "Amsterdam",
+  gender: "female"
+)
+
+User.create(
+  username: 'hello',
+  email: 'hello@gmail.com',
+  password: '12345678',
+  phone_number: Faker::Company.duns_number,
+  user_type: "trainee",
+  first_name: "Sam",
+  last_name: "Smith",
+  city: "London",
+  gender: "male"
+)
+
 5.times do
   user = User.new(
     username: Faker::Internet.username,
