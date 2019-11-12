@@ -6,8 +6,37 @@ Category: <%= @course.category %>
 Description: <%= @course.description %>
 Address: <%= @course.address %>
 
+
 <h3><%= link_to "Edit", edit_course_path(@course) %></h3>
 <h3><%= link_to "Delete", course_path(@course),
       method: :delete,
       data: { confirm: "Are you sure?" } %></h3>
+
+<% total_stars = @course.reviews.map { |review| review.stars }   %>
+<% @average_rating = total_stars.sum / total_stars.count %>
+<h3>Average Rating: <%= @average_rating %> </h3>
+
+<h3>Reviews</h3>
+  <% if @course.reviews.empty? %>
+    <p>Be the first to let a review</p>
+  <% else %>
+    <ul class="list-group">
+      <% @course.reviews.each do |review| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span class="badge badge-primary badge-pill">
+            <% counter = 0 %>
+            <% 5.times do %>
+              <i class="fa <%= review.stars > counter ? 'fa-star' : 'fa-star-o' %>"></i>
+              <% counter += 1 %>
+            <% end %>
+          </span>
+          <%= review.description %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <!-- %= render "reviews/new", course: @course, review: @review %> -->
+
+</div>
 
