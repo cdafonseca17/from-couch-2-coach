@@ -1,4 +1,6 @@
 class TimeslotsController < ApplicationController
+  before_action :set_course
+
   def index
     @timeslots = Timeslot.all
   end
@@ -13,11 +15,12 @@ class TimeslotsController < ApplicationController
 
   def create
     @timeslot = Timeslot.new(params_create)
-    @timeslot.course = @course
+    @timeslot.course_id = @course.id
     if @timeslot.save
-      redirect_to timeslot_path(@timeslot)
+      redirect_to course_timeslots_path(@course.id)
     else
       render :new
+      # p @timeslot.errors
     end
   end
 
@@ -29,7 +32,7 @@ class TimeslotsController < ApplicationController
     @timeslot = Timeslot.find(params[:id].to_i)
 
     if @timeslot.update(params_update)
-      redirect_to timeslot_path
+      redirect_to course_timeslot_path
     else
       render :new
     end
@@ -38,7 +41,7 @@ class TimeslotsController < ApplicationController
   def destroy
     @timeslot = Timeslot.find(params[:id].to_i)
     @timeslot.destroy
-    redirect_to timeslots_path
+    redirect_to course_timeslots_path
   end
 
   private
@@ -49,5 +52,9 @@ class TimeslotsController < ApplicationController
 
   def params_update
     params.require('timeslot').permit(:date, :time)
+  end
+
+  def set_course
+    @course = Course.find(params[:course_id])
   end
 end
