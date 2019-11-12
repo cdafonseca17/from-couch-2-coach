@@ -8,7 +8,7 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 100px;
 }
 
 .navbar {
@@ -16,6 +16,10 @@
     background: rgba(71, 85, 94, .7);
     border-color: #47555E;
     // opacity: 70%;
-    position: absolute;
+    // position: absolute;
     width: 100%;
+}
+
+.nav-item {
+  color: white;
 }
