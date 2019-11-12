@@ -1,0 +1,9 @@
+<h1>Timeslots#new</h1>
+<p>Find me in app/views/timeslots/new.html.erb</p>
+
+<%= simple_form_for [@timeslot] do |f| %>
+  <%= f.input :date %>
+  <%= f.input :time %>
+  <%= f.submit "add a timeslot"%>
+<% end %>
+
