@@ -1,8 +1,14 @@
 <h1>Courses#index</h1>
 <p>Find me in app/views/courses/index.html.erb</p>
 
-<% @courses.each do |course| %>
-  <%= course.name %>
-  <%= course.category %>
-  <%= course.description %>
-<% end %>
+
+  <% @courses.each do |course| %>
+    <div>
+      Name: <%= link_to course.name.capitalize, course_path(course) %>
+      Category: <%= course.category %>
+      Description: <%= course.description %>
+    </div>
+  <% end %>
+
+<%= link_to "create course", new_course_path %>
+

@@ -1,2 +1,10 @@
 <h1>Courses#update</h1>
 <p>Find me in app/views/courses/update.html.erb</p>
+
+<%= simple_form_for [@course] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :category %>
+  <%= f.input :description %>
+  <%= f.input :address %>
+  <%= f.submit "add a course" %>
+<% end %>
