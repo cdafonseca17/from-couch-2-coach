@@ -71,24 +71,24 @@ end
     description: Faker::Lorem.sentence,
     address: Faker::Address.street_address,
     user_id: User.where(user_type: "trainer").sample.id
-  )
+    )
   course.save!
   5.times do
-  review = Review.new(
-    stars: [1, 2, 3, 4, 5].sample,
-    description: Faker::Lorem.sentence,
-    course_id: course.id
-  )
-  review.save!
-  5.times do
-  timeslot = Timeslot.new(
-    date: Faker::Date.in_date_period(month: 12),
-    time: ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"].sample,
-    course_id: course.id
-  )
-  timeslot.save!
-end
-end
+    review = Review.new(
+      stars: [1, 2, 3, 4, 5].sample,
+      description: Faker::Lorem.sentence,
+      course_id: course.id
+      )
+    review.save!
+    5.times do
+      timeslot = Timeslot.new(
+        date: Faker::Date.in_date_period(month: 12),
+        time: ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"].sample,
+        course_id: course.id
+        )
+      timeslot.save!
+    end
+  end
 end
 
 puts 'seeds created'
