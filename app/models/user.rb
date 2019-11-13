@@ -6,13 +6,14 @@ class User < ApplicationRecord
   has_many :courses
   has_many :appointments
   # validates :username, uniqueness: true
-  # validates :password, length: { within: 8..40 }
-  # validates :email, presence: true
+  validates :password, length: { within: 8..40 }
+  validates :email, presence: true
   # validates :phone_number, presence: true
-  # validates :first_name, presence: true
-  # validates :last_name, presence: true
-  # validates :city, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :city, presence: true
   # validates :gender, presence: true
+  validates :user_type, presence: true
 end
 
 # More complicated password validation we can use:
