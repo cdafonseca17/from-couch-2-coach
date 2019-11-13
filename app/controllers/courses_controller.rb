@@ -7,22 +7,14 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
   end
 
-  def new
-    @course = Course.new
-  end
-
   def create
     @course = Course.new(params_create)
     @course.user = current_user
     if @course.save
-      redirect_to course_path(@course)
+      redirect_to managecourses_path
     else
       render :new
     end
-  end
-
-  def edit
-    @course = Course.find(params[:id].to_i)
   end
 
   def update

@@ -21,13 +21,17 @@
   <div class="text-right">
     <div class="pb-3">
       <% total_stars = @course.reviews.map { |review| review.stars }   %>
-      <% @average_rating = total_stars.sum / total_stars.count %>
+       <% if false %>
+      <% @average_rating = total_stars.sum / total_stars.count  %>
       <% counter = 0 %>
+
       <% 5.times do %>
         <i class="fa <%= @average_rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
         <% counter += 1 %>
       <% end %>
+      <% end %>
       (<%= Review.count %> reviews)
+
     </div>
     <div class="pb-3">
       [Price]
@@ -94,7 +98,5 @@
 </div>
 
 <h3><%= link_to "Edit", edit_course_path(@course) %></h3>
-<h3><%= link_to "Delete", course_path(@course),
-      method: :delete,
-      data: { confirm: "Are you sure?" } %></h3>
+
 

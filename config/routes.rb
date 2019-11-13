@@ -17,4 +17,5 @@ Rails.application.routes.draw do
        resources :reviews, only: [ :new, :create ]
        resources :timeslots
      end
+     get '/managecourses', to: 'pages#managecourses'
    end
