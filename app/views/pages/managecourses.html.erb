@@ -38,12 +38,12 @@
     <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
     <div>
       <div class="card-product-infos">
-        <h3><%= course.name.capitalize %></h3>
-        <h2><%= course.category %></h2>
+        <p style="font-size: 18px"><strong>Course name: </strong><%= course.name.capitalize %></p>
+        <p style="font-size: 18px"><strong>Category: </strong><%= course.category %></p>
       </div>
       <div class="pb-2">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#editCourseModal">
+        <button type="button" class="btn btn-link ml-1" data-toggle="modal" data-target="#editCourseModal">
           <i class="far fa-edit"></i>
         </button>
 
