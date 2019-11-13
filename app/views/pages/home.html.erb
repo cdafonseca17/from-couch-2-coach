@@ -4,20 +4,135 @@
       <div class="col-12 col-md-6 col-lg-6 offset-lg-3">
         <form class="banner-form">
           <h2 class="text-left mb-3">Find a class right now</h2>
-            <div class="form-group">
-              <label for="class-category">Class category</label>
-              <input type="text" class="form-control" id="class-category" placeholder="Spinning">
-            </div>
-            <div class="form-group">
-              <label for="time-slot">When do you want to train?</label>
-              <select id="time-slot" class="form-control">
-                <option value="">Morning</option>
-                <option value="">Afternoon</option>
-                <option value="">Evening</option>
-              </select>
-            </div>
-            <input type="submit" value="Search" class="btn btn-primary btn-lg w-100">
+          <div class="form-group">
+            <label for="class-category">Class category</label>
+            <input type="text" class="form-control" id="class-category" placeholder="Spinning">
+          </div>
+          <div class="form-group">
+            <label for="time-slot">When do you want to train?</label>
+            <select id="time-slot" class="form-control">
+              <option value="">Morning</option>
+              <option value="">Afternoon</option>
+              <option value="">Evening</option>
+            </select>
+          </div>
+          <input type="submit" value="Search" class="btn btn-primary btn-lg w-100">
         </div>
       </div>
     </div>
   </div>
+  <div class="how-it-works">
+    <div class="row">
+      <div class="col-md-12 col-xs-12">
+        <h2>How it works</h2>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-xs-12">
+          <div class="image-container">
+           <%= image_tag "HOW_1.gif", alt: "How_to_1", width: 200, height: 260 %>
+         </div>
+         <p class="step">1. Browse through personal trainers and their courses</p>
+       </div>
+
+       <div class="col-md-4 col-xs-12">
+        <div class="image-container">
+          <%= image_tag "HOW_2.gif", alt: "How_to_2", width: 200, height: 260 %>
+        </div>
+        <p class="step">2. Book your appointment</p>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <div class="image-container">
+          <%= image_tag "HOW_3.gif", alt: "How_to_3", width: 200, height: 260 %>
+        </div>
+        <p class="step">3. Get off the couch!</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class=how-it-works>
+  <div class="row">
+      <div class="col-md-12 col-xs-12">
+        <h2>Some of our classes</h2>
+      </div>
+    </div>
+    </div>
+  <div class="course-type-cards">
+    <div class="course-type-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80)">
+      Yoga
+    </div>
+
+    <div class="course-type-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1513593771513-7b58b6c4af38?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2689&q=80)">
+      Running
+    </div>
+
+    <div class="course-type-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1528304270437-714a2d6fbb6b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80)">
+      Fitness
+    </div>
+    <div class="course-type-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1501116518234-f32f28802bd1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1896&q=80)">
+      Kickboxing
+    </div>
+    <div class="course-type-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1554470166-20d3f466089b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3208&q=80)">
+      Spinning
+    </div>
+    <div class="course-type-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1529688058915-efa36c307cf7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=933&q=80)">
+      Powerlifting
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer class="page-footer font-small cyan darken-3">
+
+  <!-- Footer Elements -->
+  <div class="container">
+
+    <!-- Grid row-->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-12 py-5">
+        <div class="d-flex justify-content-center">
+
+          <!-- Facebook -->
+          <a class="fb-ic">
+            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!-- Twitter -->
+          <a class="tw-ic">
+            <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!-- Google +-->
+          <a class="gplus-ic">
+            <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!--Linkedin -->
+          <a class="li-ic">
+            <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!--Instagram-->
+          <a class="ins-ic">
+            <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!--Pinterest-->
+          <a class="pin-ic">
+            <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
+          </a>
+        </div>
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row-->
+
+  </div>
+  <!-- Footer Elements -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <a href="https://mdbootstrap.com/education/bootstrap/"> fromcouch2coach.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
