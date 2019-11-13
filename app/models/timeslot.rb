@@ -3,6 +3,9 @@ class Timeslot < ApplicationRecord
   has_one :appointment
   validates :date, presence: true
   validates :time, presence: true
+  def time
+    attributes["time"].strftime("%R")
+  end
 
   def timeslot_label
     "Date: #{date} Time: #{time}"
