@@ -27,18 +27,15 @@
         <i class="fa <%= average_rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
         <% counter += 1 %>
       <% end %>
-
       (<%= Review.count %> reviews)
-
-
-
+      
 
     </div>
     <div class="pb-3">
       [Price]
     </div>
     <div>
-      <button class="btn btn-primary btn-block">Book</button>
+      <%= link_to "Create new appointment", new_course_appointment_path(@course), class: "btn btn-primary btn-block"  %>
     </div>
   </div>
 </div>

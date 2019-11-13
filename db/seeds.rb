@@ -20,7 +20,7 @@ User.create(
   last_name: "Da Fonseca",
   city: "Amsterdam",
   gender: "female"
-)
+  )
 
 User.create(
   username: 'hello',
@@ -32,7 +32,7 @@ User.create(
   last_name: "Smith",
   city: "London",
   gender: "male"
-)
+  )
 
 5.times do
   user = User.new(
@@ -45,7 +45,7 @@ User.create(
     last_name: Faker::Name.last_name,
     city: Faker::Address.city,
     gender: ["male", "female"].sample
-  )
+    )
   user.save!
 end
 
@@ -60,7 +60,7 @@ end
     last_name: Faker::Name.last_name,
     city: Faker::Address.city,
     gender: ["male", "female"].sample
-  )
+    )
   user.save!
 end
 
@@ -73,6 +73,7 @@ end
     user_id: User.where(user_type: "trainer").sample.id
     )
   course.save!
+
   5.times do
     review = Review.new(
       stars: [1, 2, 3, 4, 5].sample,
@@ -80,14 +81,14 @@ end
       course_id: course.id
       )
     review.save!
-    5.times do
-      timeslot = Timeslot.new(
-        date: Faker::Date.in_date_period(month: 12),
-        time: ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"].sample,
-        course_id: course.id
-        )
-      timeslot.save!
-    end
+  end
+  1.times do
+    timeslot = Timeslot.new(
+      date: Faker::Date.in_date_period(month: 12),
+      time: ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"].sample,
+      course_id: course.id
+      )
+    timeslot.save
   end
 end
 

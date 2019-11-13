@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # get 'appointments/new'
+  # get 'appointments/create'
   # get 'timeslots/index'
   # get 'timeslots/new'
   # get 'timeslots/create'
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
     resources :courses do
        resources :reviews, only: [ :new, :create ]
        resources :timeslots
+       resources :appointments, only: [ :new, :create ]
      end
      get '/managecourses', to: 'pages#managecourses'
    end
