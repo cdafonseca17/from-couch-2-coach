@@ -20,4 +20,5 @@ Rails.application.routes.draw do
        resources :timeslots
        resources :appointments, only: [ :new, :create ]
      end
+     get '/managecourses', to: 'pages#managecourses'
    end

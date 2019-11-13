@@ -2,15 +2,11 @@ class TimeslotsController < ApplicationController
   before_action :set_course
 
   def index
-    @timeslots = Timeslot.all
+    @timeslots = Timeslot.where(course_id: @course)
   end
 
   def show
     @timeslot = Timeslot.find(params[:id])
-  end
-
-  def new
-    @timeslot = Timeslot.new
   end
 
   def create

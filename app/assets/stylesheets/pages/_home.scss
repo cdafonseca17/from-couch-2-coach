@@ -14,8 +14,8 @@
   // width: 350px;
   padding: 16px;
   background-color: white;
-  border-radius: 20px;
-  opacity: 70%;
+  border-radius: 10px;
+  opacity: 90%;
 }
 
 .banner-form h2 {
@@ -29,4 +29,28 @@
 .form-container {
   width: 400px;
   font-size: 14px;
+}
+
+.how-it-works{
+  text-align: center;
+    padding: 16px;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-bottom: 0px;
+}
+
+.how-it-works h2 {
+  padding-bottom: 16px;
+  padding-top: 16px;
+  }
+
+.image-container{
+  height: 261px;
+  position: relative;
+}
+
+.step{
+  margin-top: 16px;
 }

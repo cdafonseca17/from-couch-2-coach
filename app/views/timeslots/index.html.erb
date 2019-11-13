@@ -1,14 +1,44 @@
-<h1>Timeslots#index</h1>
-<p>Find me in app/views/timeslots/index.html.erb</p>
+<% @course = Course.find(params[:course_id]) %>
+<div class="text-center py-3">
+  <h1>Timeslots</h1>
+  <h3>for <%= @course.name.capitalize %></h3>
+</div>
+  <!-- Button trigger modal -->
+<div class="text-center pb-4">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Add timeslot
+  </button>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add a timeslot</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
 
-  <% @timeslots.each do |timeslot| %>
-    <div>
-      Date: <%= timeslot.date %>
-      Time: <%= timeslot.time %>
+        <% @timeslot = Timeslot.new %>
+        <%= simple_form_for [@course, @timeslot] do |f| %>
+          <%= f.input :date %>
+          <%= f.input :time %>
+          <%= f.submit "Add a timeslot", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% @timeslots.each do |timeslot| %>
+    <div style="background-color: white" class="p-3 mb-3">
+      <p><strong>Date: </strong><%= timeslot.date %></p>
+      <p><strong>Time: </strong><%= timeslot.time %></p>
     </div>
   <% end %>
 
-<%= link_to "Create timeslot for this course", new_course_timeslot_path %>
 <!-- %= link_to "Edit timeslot for this course", edit_course_timeslot_path %> -->
  <!-- link_to "Delete timeslot for this course", delete_course_timeslot_path %> -->
 

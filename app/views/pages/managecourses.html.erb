@@ -1,0 +1,97 @@
+<div class="d-flex justify-content-between py-4">
+  <h1>My courses</h1>
+  <div>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary mr-4" data-toggle="modal" data-target="#addCourseModal">
+      Add course
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="addCourseModal" tabindex="-1" role="dialog" aria-labelledby="addCourseModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addCourseModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <% @course = Course.new %>
+            <%= simple_form_for [@course] do |f| %>
+            <%= f.input :name %>
+            <%= f.input :category %>
+            <%= f.input :description %>
+            <%= f.input :address %>
+            <%= f.submit "Add a course", class: "btn btn-primary"%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% @courses = Course.where(user: current_user) %>
+<% @courses.each do |course| %>
+
+  <div class="card-product mb-4">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+    <div>
+      <div class="card-product-infos">
+        <p style="font-size: 18px"><strong>Course name: </strong><%= course.name.capitalize %></p>
+        <p style="font-size: 18px"><strong>Category: </strong><%= course.category %></p>
+      </div>
+      <div class="pb-2">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-link ml-1" data-toggle="modal" data-target="#editCourseModal">
+          <i class="far fa-edit"></i>
+        </button>
+
+        <%= link_to ('<i class="far fa-trash-alt"></i>').html_safe, course_path(course),
+              method: :delete,
+              class: 'btn btn-link',
+              data: { confirm: "Are you sure?" } %>
+
+        <%= link_to course_timeslots_path(course), class: 'btn btn-link' do %>
+          <i class="far fa-clock"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="editCourseModal" tabindex="-1" role="dialog" aria-labelledby="editCourseModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editCourseModalLabel">Edit course</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for [course] do |f| %>
+            <%= f.input :name %>
+            <%= f.input :category %>
+            <%= f.input :description %>
+            <%= f.input :address %>
+            <%= f.submit "Edit course", class: "btn btn-primary"%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<% end %>
+
+
+
+
+
+
+
+<h1>My appointments</h1>
