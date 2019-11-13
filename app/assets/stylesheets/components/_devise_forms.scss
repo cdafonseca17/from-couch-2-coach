@@ -1,27 +1,16 @@
-// .devise-form-container {
-//   width: 700px;
-//   font-size: 14px;
-//   padding: 20px;
-//   // text-align: left;
-//   margin: auto 0;
-//   background-color: white;
-//   border-radius: 20px;
-// }
-
-
-// .form-background {
-//   background-color: #7B858A;
-// }
-
-// .text-center {
-//   text-align: center;
-// }
-
 .background-grey {
   background-color: #7B858A;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
+
+.background-grey-login {
+  background-color: #7B858A;
+  // padding-top: 20px;
+  // padding-bottom: 20px;
+  height: 800px;
+}
+
 .devise-form-container {
   width: 60%;
   padding-top: 20px;
@@ -40,3 +29,21 @@
   text-align: center;
   padding-bottom: 15px;
 }
+
+.form-actions {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  text-align: center;
+  border: 1px solid #4A4A4A;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.form-actions:hover {
+  opacity: 1;
+}
+
