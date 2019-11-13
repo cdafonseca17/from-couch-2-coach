@@ -21,11 +21,15 @@
   <div class="text-right">
     <div class="pb-3">
       <% total_stars = @course.reviews.map { |review| review.stars }   %>
+      <!-- added if false just to comment out average rating ruby code, for now -->
+      <% if false %>
       <% @average_rating = total_stars.sum / total_stars.count %>
       <% counter = 0 %>
       <% 5.times do %>
         <i class="fa <%= @average_rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
         <% counter += 1 %>
+      <% end %>
+      <!-- below 'end' goes with the 'if false' -->
       <% end %>
       (<%= Review.count %> reviews)
     </div>
@@ -33,7 +37,8 @@
       [Price]
     </div>
     <div>
-      <button class="btn btn-secondary btn-block">Book</button>
+      <!-- <button class="btn btn-secondary btn-block"></button> -->
+      <%= link_to "Create new appointment", new_course_appointment_path(@course), class: "btn btn-secondary btn-block"  %>
     </div>
   </div>
 </div>
