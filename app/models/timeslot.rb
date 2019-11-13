@@ -3,7 +3,7 @@ class Timeslot < ApplicationRecord
   has_one :appointment
   validates :date, presence: true
   validates :time, presence: true
-  def time
+  def time_format
     attributes["time"].strftime("%R")
   end
 

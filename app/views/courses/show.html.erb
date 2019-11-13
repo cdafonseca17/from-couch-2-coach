@@ -20,12 +20,14 @@
   </div>
   <div class="text-right">
     <div class="pb-3">
+      <% unless @course.reviews.empty? %>
       <% total_stars = @course.reviews.map { |review| review.stars }   %>
        <% average_rating = total_stars.sum.to_i/total_stars.count %>
        <% counter = 0 %>
       <% 5.times do %>
         <i class="fa <%= average_rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
         <% counter += 1 %>
+      <% end %>
       <% end %>
       (<%= Review.count %> reviews)
 
