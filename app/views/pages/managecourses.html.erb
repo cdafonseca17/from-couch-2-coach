@@ -36,7 +36,7 @@
 </div>
 <% end %>
 
-<% if policy(Course).show? %>
+<% if policy(Course).list_trainer_courses? %>
 
   <% @courses.each do |course| %>
 
@@ -56,7 +56,7 @@
           <button type="button" class="btn btn-link ml-1" data-toggle="modal" data-target="#editCourseModal<%=course.id%>">
             <i class="far fa-edit"></i>
           </button>
-          
+
           <% if policy(Course).destroy? %>
               <%= link_to ('<i class="far fa-trash-alt"></i>').html_safe, course_path(course),
               method: :delete,
