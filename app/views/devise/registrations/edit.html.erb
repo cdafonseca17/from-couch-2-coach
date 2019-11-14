@@ -12,20 +12,23 @@
 
     <div>
 
-     <div class="form-group col-md-6">
-          <%= f.input :first_name, label: 'First name', error: 'First name is mandatory, please specify one',
-          required: true,
-          autofocus: true,
-          input_html: { autocomplete: "" }%>
-      </div>
+    <%= f.input :first_name, label: 'First name', error: 'First name is mandatory, please specify one',
+        required: true,
+        autofocus: true,
+        input_html: { autocomplete: "" }%>
 
-      <div class="form-group col-md-6">
-          <%= f.input :last_name,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "" }%>
-              </div>
-            </div>
+    <%= f.input :last_name,
+        required: true,
+        autofocus: true,
+        input_html: { autocomplete: "" }%>
+
+    <%= f.input :city,
+        required: true,
+        autofocus: true,
+        input_html: { autocomplete: "" }%>
+
+    <%= f.input :gender, label: 'Gender: ', collection: ["Male", "Female", "Rather not say"] %>
+
 
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
