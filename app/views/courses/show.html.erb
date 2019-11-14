@@ -99,8 +99,85 @@
 <% @review = Review.new %>
 <%= render "reviews/new", course: @course, review: @review %>
 
+<div class="availability-time-picker group-len-3">
+  <section class="timeslot-groups">
+    <ol><!-- ngRepeat: group in vm.groups -->
+      <li class="timeslot-group ng-scope" ng-repeat="group in vm.groups">
+        <header ng-class="::{'has-name': !!group.name}"><!-- ngIf: ::group.name -->
+          <h1 class="group-date ng-binding">&nbsp;Saturday, November 16</h1></header>
+          <ss-side-scroller class="timeslot-list ng-isolate-scope" scroll-offset="125" disable-gradients="true">
+            <div class="ss-side-scroller enabled disable-gradients" ng-class="{     'enabled': isEnabled(),     'disabled': !isEnabled(),     'can-scroll-left': canScrollLeft,     'can-scroll-right': canScrollRight,     'disable-gradients': disableGradients }" ng-click="contentClickHandler($event)">
+              <button class="scroll-arrow arrow-left" ng-click="pageLeft($event)"></button>
+              <div class="ss-scroller-content" ng-transclude="ng-transclude">
+                <ol class="ng-scope"><!-- ngRepeat: timeslot in ::group.slots -->
+                  <li ng-repeat="timeslot in ::group.slots" class="ng-scope">
+                    <button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">3:45 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                    <li ng-repeat="timeslot in ::group.slots" class="ng-scope">
+                      <button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">4:00 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                      <li ng-repeat="timeslot in ::group.slots" class="ng-scope">
+                        <button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">4:15 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots --></ol></div>
+                        <button class="scroll-arrow arrow-right" ng-click="pageRight($event)"></button></div></ss-side-scroller></li><!-- end ngRepeat: group in vm.groups -->
+                        <li class="timeslot-group ng-scope" ng-repeat="group in vm.groups">
+                          <header ng-class="::{'has-name': !!group.name}"><!-- ngIf: ::group.name -->
+                            <h1 class="group-date ng-binding">&nbsp;Thursday, November 21</h1></header>
+                            <ss-side-scroller class="timeslot-list ng-isolate-scope" scroll-offset="125" disable-gradients="true">
+                              <div class="ss-side-scroller enabled disable-gradients can-scroll-right" ng-class="{     'enabled': isEnabled(),     'disabled': !isEnabled(),     'can-scroll-left': canScrollLeft,     'can-scroll-right': canScrollRight,     'disable-gradients': disableGradients }" ng-click="contentClickHandler($event)" style="">
+                                <button class="scroll-arrow arrow-left" ng-click="pageLeft($event)"></button><div class="ss-scroller-content" ng-transclude="ng-transclude">
+                                  <ol class="ng-scope"><!-- ngRepeat: timeslot in ::group.slots -->
+                                    <li ng-repeat="timeslot in ::group.slots" class="ng-scope">
+                                      <button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">11:45 AM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                      <li ng-repeat="timeslot in ::group.slots" class="ng-scope">
+                                        <button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">12:00 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                        <li ng-repeat="timeslot in ::group.slots" class="ng-scope">
+                                          <button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">12:15 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                          <li ng-repeat="timeslot in ::group.slots" class="ng-scope">
+                                            <button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">12:30 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                            <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">12:45 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                            <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">2:45 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                            <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">3:00 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                            <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">3:15 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                            <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">3:30 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                            <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">3:45 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                            <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">4:00 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                            <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">4:15 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                            <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">4:30 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                            <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">4:45 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                            <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">5:00 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                            <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">5:15 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                            <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">5:30 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                            <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">5:45 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots --></ol></div>
+                                            <button class="scroll-arrow arrow-right" ng-click="pageRight($event)"></button></div></ss-side-scroller></li><!-- end ngRepeat: group in vm.groups -->
+                                            <li class="timeslot-group ng-scope" ng-repeat="group in vm.groups">
+                                              <header ng-class="::{'has-name': !!group.name}"><!-- ngIf: ::group.name -->
+                                                <h1 class="group-date ng-binding">&nbsp;Friday, November 22</h1></header>
+                                                <ss-side-scroller class="timeslot-list ng-isolate-scope" scroll-offset="125" disable-gradients="true">
+                                                  <div class="ss-side-scroller enabled disable-gradients can-scroll-right" ng-class="{     'enabled': isEnabled(),     'disabled': !isEnabled(),     'can-scroll-left': canScrollLeft,     'can-scroll-right': canScrollRight,     'disable-gradients': disableGradients }" ng-click="contentClickHandler($event)" style="">
+                                                    <button class="scroll-arrow arrow-left" ng-click="pageLeft($event)"></button>
+                                                    <div class="ss-scroller-content" ng-transclude="ng-transclude">
+                                                      <ol class="ng-scope"><!-- ngRepeat: timeslot in ::group.slots -->
+                                                        <li ng-repeat="timeslot in ::group.slots" class="ng-scope">
+                                                          <button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">10:00 AM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                                          <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">10:15 AM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                                          <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">10:30 AM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                                          <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">10:45 AM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                                          <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">11:00 AM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                                          <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">11:15 AM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                                          <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">11:30 AM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                                          <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">11:45 AM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                                          <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">4:00 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                                          <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">4:15 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                                          <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">4:30 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                                          <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">4:45 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                                          <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">5:00 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                                          <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">5:15 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                                          <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">5:30 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots -->
+                                                          <li ng-repeat="timeslot in ::group.slots" class="ng-scope"><button class="timeslot ss-button medium primary ng-binding" ng-click="vm.selectTimeslot(group, timeslot)">5:45 PM</button></li><!-- end ngRepeat: timeslot in ::group.slots --></ol></div>
+                                                          <button class="scroll-arrow arrow-right" ng-click="pageRight($event)"></button></div></ss-side-scroller></li><!-- end ngRepeat: group in vm.groups --></ol></section></div>
+
 
 
 </div>
+
+
 
 

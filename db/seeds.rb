@@ -84,7 +84,7 @@ end
   end
   5.times do
     timeslot = Timeslot.new(
-      date: Faker::Date.in_date_period(month: 12),
+      date: ["11/14/2019", "11/15/2019", "11/16/2019", "11/17/2019", "11/18/2019"].sample,
       time: ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"].sample,
       course_id: course.id
       )

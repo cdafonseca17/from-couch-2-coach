@@ -1,6 +1,14 @@
 class AppointmentsController < ApplicationController
   before_action :set_course
-  def new
+  def newclass AppointmentsController < DelegateClass(ParentClass)
+    def initialize(args)
+      super(del_obj)
+
+
+    end
+
+
+  end
     @appointment = Appointment.new
     @timeslots = Timeslot.where(course_id: params[:course_id])
   end

@@ -1,8 +1,13 @@
-<!-- Appointments#new -->
-<!-- Find me in app/views/appointments/new.html.erb -->
-<div id="appointments_modal">
-<%= simple_form_for [course, appointment] do |f| %>
-  <%= f.association :timeslot, collection: course.timeslots, label_method: :timeslot_label %>
+<!-- Appointments#new</h1> -->
+<!-- Find me in app/views/appointments/new.html.erb</p> -->
+<%= simple_form_for [@course, @appointment] do |f| %>
+  <% array = course.timeslots.map {|timeslot| timeslot.date }.uniq %>
+  <% array.each do |date| %>
+      <%= Date.strptime(date,'%m/%d/%Y').strftime('%a, %b %d, %Y')  %>
+     <%= f.input :timeslot, collection: course.timeslots.where(date: date).map { |item| item.time } %>
+
+  <% end %>
   <%= f.submit "Add this appointment to your calendar"%>
 <% end %>
-</div>
+
+
