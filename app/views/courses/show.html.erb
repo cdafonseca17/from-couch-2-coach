@@ -39,8 +39,7 @@
       </div>
       <div>
         <%= link_to "Create new appointment (page)", new_course_appointment_path(@course), class: "btn btn-primary btn-block"  %>
-        <% @appointment = Appointment.new %>
-        <% @timeslots = Timeslot.where(course_id: params[:course_id])  %>
+
         <!-- %= render "reviews/new", course: @course, review: @review %> -->
       </div>
 
@@ -60,10 +59,9 @@
               </button>
             </div>
             <div class="modal-body">
-              <%= simple_form_for [@course, @appointment] do |f| %>
-              <%= f.association :timeslot, collection: @timeslots, label_method: :timeslot_label %>
-              <%= f.submit "Add this appointment to your calendar"%>
-              <% end %>
+              <% @appointment = Appointment.new %>
+              <%= render "appointments/new", course: @course, appointment: @appointment %>
+              <%= link_to "ModalTest", "#appointments_modal", "data-toggle" => "modal" %>
             </div>
           </div>
         </div>
@@ -105,31 +103,7 @@
 </div>
 </div>
 
-<h4>Write a review!</h4>
-<form>
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Rating (1-5)</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Please give a brief description of your experience with this teacher and class.</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-    placeholder="Write your review here" ></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary btn-block"> Submit review </button>
-  <p><span id='display'></span></p>
-</form>
-
-
-<h3>Add a review</h3>
-
-  <% @review = Review.new %>
+<% @review = Review.new %>
 <%= render "reviews/new", course: @course, review: @review %>
 
 
