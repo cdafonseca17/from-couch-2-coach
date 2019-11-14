@@ -6,4 +6,5 @@ class Course < ApplicationRecord
   validates :category, presence: true
   validates :description, length: { minimum: 10 }
   validates :address, presence: true
+  mount_uploader :photo, PhotoUploader, presence: true
 end
