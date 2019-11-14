@@ -41,10 +41,10 @@ class CoursesController < ApplicationController
   private
 
   def params_create
-    params.require('course').permit(:name, :category, :description, :address)
+    params.require('course').permit(:name, :category, :description, :address, :photo)
   end
 
   def params_update
-    params.require('course').permit(:name, :category, :description, :address)
+    params.require('course').permit(:name, :category, :description, :address, :photo)
   end
 end

@@ -24,6 +24,8 @@
             <%= f.input :category %>
             <%= f.input :description %>
             <%= f.input :address %>
+            <%= f.input :photo %>
+            <%= f.input :photo_cache, as: :hidden %>
             <%= f.submit "Save", class: "btn btn-primary"%>
             <% end %>
           </div>
@@ -38,9 +40,12 @@
 
   <% @courses.each do |course| %>
 
-    <div class="card-product mb-4">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-      <div>
+     <div class="card-product mb-4">
+    <% if course.photo.present? %>
+    <%= cl_image_tag course.photo, crop: :fill %>
+    <% else  %>
+    <%= image_tag "home_background.jpg" %>
+        <% end %>
         <div class="card-product-infos">
           <p style="font-size: 18px"><strong>Course name: </strong><%= course.name.capitalize %></p>
           <p style="font-size: 18px"><strong>Category: </strong><%= course.category %></p>
@@ -51,7 +56,7 @@
           <button type="button" class="btn btn-link ml-1" data-toggle="modal" data-target="#editCourseModal<%=course.id%>">
             <i class="far fa-edit"></i>
           </button>
-
+          
           <% if policy(Course).destroy? %>
               <%= link_to ('<i class="far fa-trash-alt"></i>').html_safe, course_path(course),
               method: :delete,
@@ -83,6 +88,8 @@
                 <%= f.input :category %>
                 <%= f.input :description %>
                 <%= f.input :address %>
+                <%= f.input :photo %>
+                <%= f.input :photo_cache, as: :hidden %>
                 <%= f.submit "Edit course", class: "btn btn-primary"%>
               <% end %>
             </div>

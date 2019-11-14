@@ -14,6 +14,7 @@ class User < ApplicationRecord
   validates :city, presence: true
   # validates :gender, presence: true
   validates :user_type, presence: true
+  mount_uploader :photo, PhotoUploader
 end
 
 # More complicated password validation we can use:
