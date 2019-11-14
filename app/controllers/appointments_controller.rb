@@ -20,7 +20,6 @@ class AppointmentsController < ApplicationController
   end
 
 private
-
   def params_create
     params.require('appointment').permit(:timeslot_id)
   end
