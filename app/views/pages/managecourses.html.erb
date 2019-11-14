@@ -1,3 +1,4 @@
+<% if policy(Course).create? %>
 <div class="d-flex justify-content-between py-4">
   <h1>My courses</h1>
   <div>
@@ -30,34 +31,43 @@
     </div>
   </div>
 </div>
+<% end %>
+
+<% if policy(Course).show? %>
 
 <% @courses = Course.where(user: current_user) %>
 <% @courses.each do |course| %>
 
-  <div class="card-product mb-4">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-    <div>
-      <div class="card-product-infos">
-        <p style="font-size: 18px"><strong>Course name: </strong><%= course.name.capitalize %></p>
-        <p style="font-size: 18px"><strong>Category: </strong><%= course.category %></p>
-      </div>
-      <div class="pb-2">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-link ml-1" data-toggle="modal" data-target="#editCourseModal">
-          <i class="far fa-edit"></i>
-        </button>
+<div class="card-product mb-4">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <div>
+    <div class="card-product-infos">
+      <p style="font-size: 18px"><strong>Course name: </strong><%= course.name.capitalize %></p>
+      <p style="font-size: 18px"><strong>Category: </strong><%= course.category %></p>
+    </div>
+    <div class="pb-2">
 
-        <%= link_to ('<i class="far fa-trash-alt"></i>').html_safe, course_path(course),
-              method: :delete,
-              class: 'btn btn-link',
-              data: { confirm: "Are you sure?" } %>
+  <% if policy(Course).edit? %>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-link ml-1" data-toggle="modal" data-target="#editCourseModal">
+        <i class="far fa-edit"></i>
+      </button>
+
+<% if policy(Course).destroy? %>
+      <%= link_to ('<i class="far fa-trash-alt"></i>').html_safe, course_path(course),
+      method: :delete,
+      class: 'btn btn-link',
+        data: { confirm: "Are you sure?" } %>
+<% end %>
 
         <%= link_to course_timeslots_path(course), class: 'btn btn-link' do %>
-          <i class="far fa-clock"></i>
+        <i class="far fa-clock"></i>
         <% end %>
       </div>
     </div>
   </div>
+
+  <% end %>
 
 
 
@@ -72,25 +82,26 @@
           </button>
         </div>
         <div class="modal-body">
-          <%= simple_form_for [course] do |f| %>
-            <%= f.input :name %>
-            <%= f.input :category %>
-            <%= f.input :description %>
-            <%= f.input :address %>
-            <%= f.submit "Edit course", class: "btn btn-primary"%>
+          <%= simple_form_for [@course] do |f| %>
+          <%= f.input :name %>
+          <%= f.input :category %>
+          <%= f.input :description %>
+          <%= f.input :address %>
+          <%= f.submit "Edit course", class: "btn btn-primary"%>
           <% end %>
         </div>
       </div>
     </div>
   </div>
-<% end %>
+  <% end %>
+  <% end %>
 
-<h1 class="pb-4">My appointments</h1>
+  <h1 class="pb-4">My appointments</h1>
 
-<% @appointments = Appointment.where(user: current_user) %>
-<% @appointments.each do |appointment| %>
-    <div style="background-color: white" class="p-3 mb-3">
-      <p><strong>Date: </strong><%= appointment.timeslot.date %></p>
-      <p><strong>Time: </strong><%= appointment.timeslot.time_format %></p>
-    </div>
+  <% @appointments = Appointment.where(user: current_user) %>
+  <% @appointments.each do |appointment| %>
+  <div style="background-color: white" class="p-3 mb-3">
+    <p><strong>Date: </strong><%= appointment.timeslot.date %></p>
+    <p><strong>Time: </strong><%= appointment.timeslot.time_format %></p>
+  </div>
   <% end %>
