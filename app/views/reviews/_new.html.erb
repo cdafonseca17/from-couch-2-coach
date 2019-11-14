@@ -1,0 +1,8 @@
+
+<h4>Share your experience:</h4>
+<%= simple_form_for [@course, @review] do |f| %>
+  <%= f.input :stars, collection: 1..5 %>
+  <%= f.input :description, default: 'Share your experience' %>
+  <%= f.submit class: "btn btn-primary"%>
+<% end %>
+

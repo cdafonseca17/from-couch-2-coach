@@ -1,15 +1,18 @@
 class CoursesController < ApplicationController
   def index
     @courses = Course.all
+    @courses = policy_scope(Course)
   end
 
   def show
     @course = Course.find(params[:id])
+    authorize @course
   end
 
   def create
     @course = Course.new(params_create)
     @course.user = current_user
+    authorize @course
     if @course.save
       redirect_to managecourses_path
     else
@@ -19,6 +22,7 @@ class CoursesController < ApplicationController
 
   def update
     @course = Course.find(params[:id].to_i)
+    authorize @course
 
     if @course.update(params_update)
       redirect_to managecourses_path
@@ -29,6 +33,7 @@ class CoursesController < ApplicationController
 
   def destroy
     @course = Course.find(params[:id].to_i)
+    authorize @course
     @course.destroy
     redirect_to managecourses_path
   end
