@@ -82,3 +82,4 @@ ActiveRecord::Schema.define(version: 2019_11_14_104811) do
   add_foreign_key "reviews", "courses"
   add_foreign_key "timeslots", "courses"
 end
+end
