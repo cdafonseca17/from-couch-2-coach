@@ -37,17 +37,11 @@
       <div class="pb-3">
         [Price]
       </div>
-      <div>
-        <%= link_to "Create new appointment (page)", new_course_appointment_path(@course), class: "btn btn-primary btn-block"  %>
-
-        <!-- %= render "reviews/new", course: @course, review: @review %> -->
-      </div>
 
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Create new appointment (pop-up)
+        Create new appointment
       </button>
-
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -61,7 +55,6 @@
             <div class="modal-body">
               <% @appointment = Appointment.new %>
               <%= render "appointments/new", course: @course, appointment: @appointment %>
-              <%= link_to "ModalTest", "#appointments_modal", "data-toggle" => "modal" %>
             </div>
           </div>
         </div>
