@@ -10,6 +10,23 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
+    <div>
+
+     <div class="form-group col-md-6">
+          <%= f.input :first_name, label: 'First name', error: 'First name is mandatory, please specify one',
+          required: true,
+          autofocus: true,
+          input_html: { autocomplete: "" }%>
+      </div>
+
+      <div class="form-group col-md-6">
+          <%= f.input :last_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "" }%>
+              </div>
+            </div>
+
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
