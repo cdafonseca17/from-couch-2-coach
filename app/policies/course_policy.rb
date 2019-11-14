@@ -7,7 +7,8 @@ class CoursePolicy < ApplicationPolicy
 
   def show?
     # record.user == user
-    user.user_type == "Trainer"
+    # user.user_type == "Trainer"
+    return true
   end
 
   def create?
@@ -17,7 +18,8 @@ class CoursePolicy < ApplicationPolicy
 
   def update?
     # record.user = user
-    user.user_type == "Trainer"
+    user.user_type == "Trainer" && record.user == user
+
     # - record: the course passed to the `authorize` method in controller
     # - user:   the `current_user` signed in with Devise.
   end
@@ -25,5 +27,6 @@ class CoursePolicy < ApplicationPolicy
   def destroy?
     # record.user == user
     user.user_type == "Trainer"
+    # record.user == user
   end
 end
