@@ -8,6 +8,8 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(params_create)
     @appointment.user = current_user
+    authorize @appointment
+
     if @appointment.save
       redirect_to root_path
     else
