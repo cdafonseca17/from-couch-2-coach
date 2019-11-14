@@ -16,6 +16,10 @@ class CoursePolicy < ApplicationPolicy
     # return true
   end
 
+  def list_trainer_courses?
+    user.user_type == "Trainer"
+  end
+
   def update?
     # record.user = user
     user.user_type == "Trainer" && record.user == user
