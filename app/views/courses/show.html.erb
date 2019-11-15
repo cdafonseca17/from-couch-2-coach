@@ -67,7 +67,7 @@
 
   <div class="card-product mb-5">
     <% if @course.user.photo.present? %>
-            <%= cl_image_tag course.user.photo, class: "card-trip-user" %>
+            <%= cl_image_tag @course.user.photo, class: "card-trip-user" %>
             <% else  %>
             <%= image_tag "no_prof_pic_present.jpg", class: "card-trip-user" %>
             <% end %>

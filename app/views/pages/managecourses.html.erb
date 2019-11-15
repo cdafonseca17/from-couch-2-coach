@@ -1,3 +1,4 @@
+<div class="container">
 <% if policy(Course).create? %>
 <div class="d-flex justify-content-between py-4">
   <h1>My courses</h1>
@@ -60,7 +61,8 @@
           <%= image_tag "home_background.jpg" %>
           <% end %>
         <div class="card-product-infos">
-          <p style="font-size: 18px"><strong>Course name: </strong><%= course.name.capitalize %></p>
+          <p style="font-size: 18px"><strong>Course name: </strong><%= link_to course.name.capitalize, course_path(course) %> </p>
+
           <p style="font-size: 18px"><strong>Category: </strong><%= course.category %></p>
         </div>
         <div class="pb-2">
@@ -83,7 +85,8 @@
         </div>
       </div>
     </div>
-
+  </div>
+    <div class="container">
     <% if policy(course).edit? %>
     <!-- Modal -->
       <div class="modal fade" id="editCourseModal<%=course.id%>" tabindex="-1" role="dialog" aria-labelledby="editCourseModalLabel" aria-hidden="true">
@@ -119,8 +122,41 @@
 <h1 class="pb-4">My appointments</h1>
 
 <% @appointments.each do |appointment| %>
-  <div style="background-color: white" class="p-3 mb-3">
-    <p><strong>Date: </strong><%= appointment.timeslot.date %></p>
-    <p><strong>Time: </strong><%= appointment.timeslot.time %></p>
-  </div>
-<% end %>
+<div class="card-product mb-5">
+
+
+    <% @user = current_user %>
+    <% if @user.user_type == "Trainee" %>
+        <% if appointment.timeslot.course.photo.present? %>
+                <%= cl_image_tag appointment.timeslot.course.user.photo, class: "card-trip-user" %>
+                <% else  %>
+                <%= image_tag "no_prof_pic_present.jpg", class: "card-trip-user" %>
+                <% end %>
+        <div class="card-product-infos">
+        <p><strong>Course Trainer: </strong><%= appointment.timeslot.course.user.first_name %></p>
+        <p><strong>Course name: </strong><%= appointment.timeslot.course.name %></p>
+        <p><strong>Course address: </strong><%= appointment.timeslot.course.address %></p>
+        <p><strong>Date: </strong><%= appointment.timeslot.date %></p>
+        <p><strong>Time: </strong><%= appointment.timeslot.time %></p>
+        </div>
+      </div>
+
+    <% else %>
+
+        <% if appointment.timeslot.course.photo.present? %>
+                <%= cl_image_tag appointment.user.photo, class: "card-trip-user" %>
+                <% else  %>
+                <%= image_tag "no_prof_pic_present.jpg", class: "card-trip-user" %>
+                <% end %>
+        <div class="card-product-infos">
+        <p><strong>Trainee: </strong><%= appointment.user.first_name %></p>
+        <p><strong>Course name: </strong><%= appointment.timeslot.course.name %></p>
+        <p><strong>Course address: </strong><%= appointment.timeslot.course.address %></p>
+        <p><strong>Date: </strong><%= appointment.timeslot.date %></p>
+        <p><strong>Time: </strong><%= appointment.timeslot.time %></p>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+</div>
+
