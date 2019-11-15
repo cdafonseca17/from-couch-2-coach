@@ -1,69 +1,103 @@
 <!--Format for the 5 star formatting-->
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1567660444666-aed93ec8aa57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1780&q=80)">
-  <h1><%= @course.name.capitalize %></h1>
-</div>
-<div class='container' name= 'page container'>
-
-
-
-  <div class="d-flex justify-content-between py-5">
-    <div>
-      <h4 class="pb-4">
-        <%= @course.category.capitalize %> Course
-      </h4>
-      <div class="pb-4">
-        <h5>What will we do?</h5>
-        <p> <%= @course.description %> </p>
-      </div>
-      <div>
-        <h5>Where will we meet?</h5>
-        <p> <%= @course.address %> </p>
-      </div>
+<div>
+    <% if @course.category == 'Powerlifting' %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cdn2.coachmag.co.uk/sites/coachmag/files/styles/16x9_746/public/2016/10/powerlifting.jpg?itok=mIcR1ESq&timestamp=1476292351)">
+      <%= @course.name.capitalize  %>
     </div>
 
-    <div class="text-right">
-      <div class="pb-3">
-        <% unless @course.reviews.empty? %>
-        <% total_stars = @course.reviews.map { |review| review.stars }   %>
-        <% average_rating = total_stars.sum.to_i/total_stars.count %>
-        <% counter = 0 %>
-        <% 5.times do %>
-        <i class="fa <%= average_rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
-        <% counter += 1 %>
-        <% end %>
-        <% end %>
-        (<%= Review.count %> reviews)
+    <% elsif @course.category == 'Spinning' %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1554470166-20d3f466089b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3208&q=80)">
+      <%= @course.name.capitalize  %>
+    </div>
+
+    <% elsif @course.category == 'Running' %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1513593771513-7b58b6c4af38?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2689&q=80)">
+      <%= @course.name.capitalize  %>
+    </div>
+
+    <% elsif @course.category == 'Yoga'  %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80)">
+      <%= @course.name.capitalize  %>
+    </div>
+
+    <% elsif @course.category == 'Fitness'  %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1528304270437-714a2d6fbb6b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80)">
+      <%= @course.name.capitalize  %>
+    </div>
+
+    <% elsif @course.category == 'Kickboxing' %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1501116518234-f32f28802bd1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1896&q=80)">
+      <%= @course.name.capitalize  %>
+    </div>
+
+    <% else  %>
+    <%= image_tag "home_background.jpg" %>
+    <% end %>
+    <!-- </div> -->
+  </div>
+
+
+
+  <%# if @course.photo.present? %>
+  <%#= cl_image_tag @course.photo, crop: :fill %>
+
+  <div class='container' name= 'page container'>
+    <div class="d-flex justify-content-between py-5">
+      <div>
+        <h5 class="pb-4">
+          <%= @course.category.capitalize %> Course
+        </h5>
+        <div class="pb-4">
+          <h3><%= @course.description %> </h3>
+
+        </div>
+        <div>
+          <h5><%= @course.address %></h5>
+
+        </div>
       </div>
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        BOOK
-      </button>
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">When do you want to train?</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <% @appointment = Appointment.new %>
-              <%= render "appointments/new", course: @course, appointment: @appointment %>
+
+      <div class="text-right">
+        <div class="pb-3">
+          <% unless @course.reviews.empty? %>
+          <% total_stars = @course.reviews.map { |review| review.stars }   %>
+          <% average_rating = total_stars.sum.to_i/total_stars.count %>
+          <% counter = 0 %>
+          <% 5.times do %>
+          <i class="fa <%= average_rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
+          <% counter += 1 %>
+          <% end %>
+          <% end %>
+          (<%= Review.count %> reviews)
+        </div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          BOOK
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Choose an appointment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <% @appointment = Appointment.new %>
+                <%= render "appointments/new", course: @course, appointment: @appointment %>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
 
-  <p>Coach Information</p>
-
-
+    <p>Coach Information</p>
 
   <div class="card-product mb-5">
     <% if @course.user.photo.present? %>
@@ -76,38 +110,37 @@
       <p><%= @course.description %></p>
       <p><%= @course.city %></p>
     </div>
-  </div>
 
 
-  <div class=d-flex>
-    <div class="col">
-      <h4>All reviews</h4>
-      <% if @course.reviews.empty? %>
-      <p>Be the first to let a review</p>
-      <% else %>
-      <ul class="list-group">
-        <% @course.reviews.each do |review| %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <%= review.description %>
-          <span class="badge badge-primary badge-pill">
-            <% counter = 0 %>
-            <% 5.times do %>
-            <i class="fa <%= review.stars > counter ? 'fa-star' : 'fa-star-o' %>"></i>
-            <% counter += 1 %>
-            <% end %>
-          </span>
+    <div class=d-flex>
+      <div class="col">
+        <h4>All reviews</h4>
+        <% if @course.reviews.empty? %>
+        <p>Be the first to let a review</p>
+        <% else %>
+        <ul class="list-group">
+          <% @course.reviews.each do |review| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <%= review.description %>
+            <span class="badge badge-primary badge-pill">
+              <% counter = 0 %>
+              <% 5.times do %>
+              <i class="fa <%= review.stars > counter ? 'fa-star' : 'fa-star-o' %>"></i>
+              <% counter += 1 %>
+              <% end %>
+            </span>
 
-        </li>
+          </li>
+          <% end %>
+        </ul>
         <% end %>
-      </ul>
-      <% end %>
-    </div>
+      </div>
 
-    <div class="col">
-      <% @review = Review.new %>
-      <%= render "reviews/new", course: @course, review: @review %>
+      <div class="col">
+        <% @review = Review.new %>
+        <%= render "reviews/new", course: @course, review: @review %>
+      </div>
     </div>
-</div>
 
 
 

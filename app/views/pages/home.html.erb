@@ -1,34 +1,24 @@
 <div class="banner">
   <div class="container">
-    <div class="row">
-      <div class="col-12 col-md-6 col-lg-6 offset-lg-3">
-        <form class="banner-form" action="/courses" method="get">
-          <h2 class="text-left mb-3">Find a class right now</h2>
-          <div class="form-group">
-            <label for="class-category">What class do you want to take?</label>
-            <input type="text" class="form-control" id="class-category" placeholder="Spinning">
-          </div>
-          <div class="form-group">
-            <label for="time-slot">When do you want to train?</label>
-            <select id="time-slot" class="form-control">
-              <option value="">13-11-2019</option>
-              <option value="">14-11-2019</option>
-              <option value="">15-11-2019</option>
-            </select>
-          </div>
-            <div class="form-group">
-            <label for="class-category">Where?</label>
-            <input type="text" class="form-control" id="class-category" placeholder="Amsterdam">
-          </div>
-          <input type="submit" value="Search" class="btn btn-primary btn-lg w-100">
+    <div class="row justify-content-center">
+      <div style="width: 350px">
+        <div>
+          <h2 style="color: white" class = "pb-2 text-center">Find a training</h2>
+          <%= form_tag courses_path, method: :get, class: 'mb-4' do |f| %>
+            <%= select_tag 'search[category]', options_for_select(@categories, params.dig(:search, :category)), include_blank: "Any category", class: 'form-control mb-3' %>
+            <%= select_tag 'search[city]', options_for_select(@cities, params.dig(:search, :city)), include_blank: "Any city", class: 'form-control mb-3' %>
+            <%= text_field_tag 'search[date]', params.dig(:search, :date), class: 'form-control mb-3', placeholder: "Any date" %>
+            <%= submit_tag "Search", class: "something btn btn-primary btn-block" %>
+          <% end %>
         </div>
       </div>
     </div>
+    </div>
   </div>
-  <div class="how-it-works">
+  <div class="how-it-works my-3">
     <div class="row">
       <div class="col-md-12 col-xs-12">
-        <h2>How it works</h2>
+        <h2 class="pb-5">How it works</h2>
       </div>
     </div>
     <div class="container">
@@ -64,17 +54,17 @@
     </div>
     </div>
   <div class="course-type-cards">
-    <a class="course-type-card-category" href='/courses?category=Yoga' style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80)">
+    <a class="course-type-card-category" href='/courses?search[category]=Yoga' style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80)">
       Yoga</a>
-    <a class="course-type-card-category" href='/courses?category=Running' style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1513593771513-7b58b6c4af38?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2689&q=80)">
+    <a class="course-type-card-category" href='/courses?search[category]=Running' style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1513593771513-7b58b6c4af38?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2689&q=80)">
       Running</a>
-      <a class="course-type-card-category" href='/courses?category=Fitness' style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1528304270437-714a2d6fbb6b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80)">
+      <a class="course-type-card-category" href='/courses?search[category]=Fitness' style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1528304270437-714a2d6fbb6b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80)">
       Fitness</a>
-      <a class="course-type-card-category" href='/courses?category=Kickboxing' style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1501116518234-f32f28802bd1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1896&q=80)">
+      <a class="course-type-card-category" href='/courses?search[category]=Kickboxing' style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1501116518234-f32f28802bd1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1896&q=80)">
       Kickboxing</a>
-      <a class="course-type-card-category" href='/courses?category=Spinning' style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1554470166-20d3f466089b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3208&q=80)">
+      <a class="course-type-card-category" href='/courses?search[category]=Spinning' style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1554470166-20d3f466089b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3208&q=80)">
       Spinning</a>
-      <a class="course-type-card-category" href='/courses?category=Powerlifting' style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1529688058915-efa36c307cf7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=933&q=80)">
+      <a class="course-type-card-category" href='/courses?search[category]=Powerlifting' style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1529688058915-efa36c307cf7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=933&q=80)">
       Powerlifting</a>
   </div>
 </div>

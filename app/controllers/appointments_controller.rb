@@ -21,6 +21,7 @@ class AppointmentsController < ApplicationController
       @appointment.user = current_user
       authorize @appointment
       @appointment.save!
+      redirect_to course_path(@course)
     end
     # @appointment.timeslot = Timeslot.find()
     #

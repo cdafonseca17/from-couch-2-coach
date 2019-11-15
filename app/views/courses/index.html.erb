@@ -6,7 +6,7 @@
 </p>
 
 <div class="container">
-<div class="row justify-content-center">
+<div class="row justify-content-center my-5">
   <div style="width: 350px">
     <div>
       <%= form_tag courses_path, method: :get, class: 'mb-4' do |f| %>
@@ -50,8 +50,9 @@
           <% end %>
           <div class="card-trip-infos">
             <div>
-              <h2><%= course.category %></h2>
-              <h3><%= course.name %></h3>
+              <h2><%= course.name.capitalize %></h3>
+              <h3><%= course.category.capitalize %></h2>
+              <p><%= course.city %></p>
             </div>
             <% if course.user.photo.present? %>
             <%= cl_image_tag course.user.photo, class: "card-trip-user avatar-bordered" %>
