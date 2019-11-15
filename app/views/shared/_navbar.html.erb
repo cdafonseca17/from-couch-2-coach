@@ -11,12 +11,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-      <li class="nav-item active" id="main">
-        <%= link_to "Home", "/", class: "nav-link" %>
-      </li>
-      <li class="nav-item" id="main">
-        <%= link_to "Messages", "#", class: "nav-link" %>
-      </li>
+
       <li class="nav-item dropdown">
         <% if current_user.photo.present? %>
         <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

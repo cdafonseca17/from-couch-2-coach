@@ -4,26 +4,32 @@
 
 <p>
 </p>
+
 <div class="container">
+<div class="row justify-content-center">
+  <div style="width: 350px">
+    <div>
+      <%= form_tag courses_path, method: :get, class: 'mb-4' do |f| %>
+        <%= select_tag 'search[category]', options_for_select(@categories, params.dig(:search, :category)), include_blank: "Any category", class: 'form-control mb-3' %>
+        <%= select_tag 'search[city]', options_for_select(@cities, params.dig(:search, :city)), include_blank: "Any city", class: 'form-control mb-3' %>
+        <%= text_field_tag 'search[date]', params.dig(:search, :date), class: 'form-control mb-3', placeholder: "Any date" %>
+        <%= submit_tag "Search", class: "something btn btn-primary btn-block" %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-  <%= form_tag courses_path, method: :get, class: 'mb-4' do |f| %>
-  <%= select_tag 'search[category]', options_for_select(@categories, params.dig(:search, :category)), include_blank: "Any category", class: 'form-control mb-3' %>
-  <%= select_tag 'search[city]', options_for_select(@cities, params.dig(:search, :city)), include_blank: "Any city", class: 'form-control mb-3' %>
-  <%= text_field_tag 'search[date]', params.dig(:search, :date), class: 'form-control mb-3' %>
-  <%= submit_tag "Search", class: "something btn btn-primary" %>
-  <% end %>
+<div class="row">
+  <% if @courses.empty? %>
+  <div class="pt-5">
+    <p>Sorry, we don't have any <%= params[:category] %> courses available at the moment.
+    <p>Check our other courses!</p>
+  </div>
+  <% else %>
+    <% @courses.each do |course| %>
 
-  <div class="row">
-    <% if @courses.empty? %>
-    <div class="pt-5">
-      <p>Sorry, we don't have any <%= params[:category] %> courses available at the moment.
-        <p>Check our other courses!</p>
-      </div>
-      <% else %>
-      <% @courses.each do |course| %>
-
-      <div class="col-4">
-        <div class="card-trip">
+    <div class="col-4">
+      <div class="card-trip">
           <%= link_to "", course_path(course), class: 'card-link' %>
           <% if course.photo.present? %>
           <%= cl_image_tag course.photo, crop: :fill %>
@@ -59,6 +65,6 @@
 
       <% end %>
     </div>
-
   </div>
 </div>
+
