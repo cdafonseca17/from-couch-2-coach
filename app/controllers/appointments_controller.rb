@@ -5,6 +5,10 @@ class AppointmentsController < ApplicationController
   #     super(del_obj)
   #   end
   # end
+  def index
+    # @appointments = Appointment.where(appointment_id: @appointment)
+    @appointments = policy_score(Appointment).order(created_at: :desc)
+  end
 
   def new
     @appointment = Appointment.new
