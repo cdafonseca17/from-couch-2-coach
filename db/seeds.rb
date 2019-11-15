@@ -15,7 +15,7 @@ User.create(
   email: 'dafonseca.ca@gmail.com',
   password: '12345678',
   phone_number: Faker::Company.duns_number,
-  user_type: "trainer",
+  user_type: "Trainer",
   first_name: "Caroline",
   last_name: "Da Fonseca",
   city: "Amsterdam",
@@ -27,7 +27,7 @@ User.create(
   email: 'hello@gmail.com',
   password: '12345678',
   phone_number: Faker::Company.duns_number,
-  user_type: "trainee",
+  user_type: "Trainee",
   first_name: "Sam",
   last_name: "Smith",
   city: "London",
@@ -67,10 +67,11 @@ end
 5.times do
   course = Course.new(
     name: Faker::Lorem.word,
-    category: ["yoga", "running", "pilates", "kick-boxing", "body burn"].sample,
+    category: ["Yoga", "Running", "Fitness", "Kickboxing", "Spinning", "Powerlifting"].sample,
     description: Faker::Lorem.sentence,
     address: Faker::Address.street_address,
-    user_id: User.where(user_type: "trainer").sample.id
+    user_id: User.where(user_type: "trainer").sample.id,
+    city: ["Amsterdam", "Paris", "London"].sample
     )
   course.save!
 
@@ -88,7 +89,7 @@ end
       time: ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"].sample,
       course_id: course.id
       )
-    timeslot.save
+    timeslot.save!
   end
 end
 

@@ -1,4 +1,4 @@
-class AppointmentPolicy < ApplicationPolicy
+class ReviewPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -14,12 +14,12 @@ class AppointmentPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user = user
+    # record.user = user
+    return false
   end
 
   def destroy?
-    record.user == user
-    # user.user_type == "Trainer"
     # record.user == user
+    return false
   end
 end
