@@ -2,7 +2,7 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin: 15px 10px;
+  margin-bottom: 30px;
 }
 
 .card-trip > img {
@@ -68,16 +68,13 @@
 }
 
 .course-type-cards {
-  flex-grow: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 16px;
-  padding: 16px;
+
 }
 .course-type-card-category {
   background-size: cover;
   background-position: center;
-  height: 360px;
+  height: 180px;
+  margin-bottom: 15px;
   // width: 240px;
   display: flex;
   justify-content: center;
@@ -88,6 +85,10 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  &:hover {
+    text-decoration: none;
+    color: white;
+  }
 }
 
 .card-product {
@@ -136,13 +137,25 @@
    .cards {
      grid-template-columns: 1fr 1fr;
    }
- }
+}
 
  /*Medium devices (tablets, 768px and up)*/
  @media (min-width: 1200px) {
    .cards {
      grid-template-columns: 1fr 1fr 1fr;
    }
+   .course-type-cards {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+  padding: 16px;
+}
+.course-type-card-category {
+  background-size: cover;
+  background-position: center;
+  height: 360px;
+ }
  }
 
 .card-description {

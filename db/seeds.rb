@@ -67,10 +67,11 @@ end
 5.times do
   course = Course.new(
     name: Faker::Lorem.word,
-    category: ["yoga", "running", "pilates", "kick-boxing", "body burn"].sample,
+    category: ["Yoga", "Running", "Fitness", "Kickboxing", "Spinning", "Powerlifting"].sample,
     description: Faker::Lorem.sentence,
     address: Faker::Address.street_address,
-    user_id: User.where(user_type: "trainer").sample.id
+    user_id: User.where(user_type: "trainer").sample.id,
+    city: ["Amsterdam", "Paris", "London"].sample
     )
   course.save!
 
@@ -84,11 +85,11 @@ end
   end
   5.times do
     timeslot = Timeslot.new(
-      date: Faker::Date.in_date_period(month: 12),
+      date: ["11/14/2019", "11/15/2019", "11/16/2019", "11/17/2019", "11/18/2019"].sample,
       time: ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"].sample,
       course_id: course.id
       )
-    timeslot.save
+    timeslot.save!
   end
 end
 

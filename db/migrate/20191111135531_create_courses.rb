@@ -6,6 +6,7 @@ class CreateCourses < ActiveRecord::Migration[5.2]
       t.string :category
       t.text :description
       t.string :address
+      t.string :city
 
       t.timestamps
     end
