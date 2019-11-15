@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_134932) do
 
   create_table "timeslots", force: :cascade do |t|
     t.string "date"
-    t.time "time"
+    t.string "time"
     t.bigint "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
