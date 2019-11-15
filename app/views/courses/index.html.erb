@@ -4,6 +4,7 @@
 
 <p>
 </p>
+
 <div class="container">
 
 <%= form_tag courses_path, method: :get, class: 'mb-4' do |f| %>
@@ -21,7 +22,7 @@
   </div>
   <% else %>
     <% @courses.each do |course| %>
- 
+
     <div class="col-4">
       <div class="card-trip">
         <% if course.photo.present? %>
@@ -37,9 +38,10 @@
       </div>
     </div>
     <% end %>
-  
+
    <% end %>
 </div>
 
 </div>
 </div>
+

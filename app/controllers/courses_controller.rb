@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
   def index
     @categories = ["Yoga", "Running", "Fitness", "Kickboxing", "Spinning", "Powerlifting"]
     @cities = ["Amsterdam", "London", "Paris"]
+    @courses = policy_scope(Course).order(created_at: :desc)
     if params[:search].nil?
       @courses = Course.all
       @courses = policy_scope(Course)
@@ -55,8 +56,10 @@ class CoursesController < ApplicationController
 
   def filter_courses
     @courses = Course.all
+    # authorize @course
     # @courses = policy_scope(Course)
     search_params = params[:search]
+
     if search_params[:category].present?
       @courses = @courses.where(category: search_params[:category])
     end
@@ -67,6 +70,6 @@ class CoursesController < ApplicationController
 
       # @courses = Course.joins(:timeslots).where('timeslots.date = ?', search_params[:date])
       @courses = Course.joins(:timeslots).where(timeslots: { date: search_params[:date] })
-    end  
+    end
   end
 end
