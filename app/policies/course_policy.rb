@@ -5,10 +5,6 @@ class CoursePolicy < ApplicationPolicy
     end
   end
 
-  def index
-    @courses = policy_scope(Course).order(created_at: :desc)
-  end
-
   def show?
     return true
   end
