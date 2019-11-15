@@ -85,10 +85,6 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  &:hover {
-    text-decoration: none;
-    color: white;
-  }
 }
 
 .card-product {
@@ -176,6 +172,4 @@
   background: black;
   opacity: 0;
 }
-.card-link:hover {
-  opacity: 0.1;
-}
+
