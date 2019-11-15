@@ -23,8 +23,8 @@
 
         <% @timeslot = Timeslot.new %>
         <%= simple_form_for [@course, @timeslot] do |f| %>
-          <%= f.input :date %>
-          <%= f.input :time %>
+          <%= f.input :date, placeholder: "Select date" %>
+          <%= f.input :time, include_blank: "Select time", collection: ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"] %>
           <%= f.submit "Add a timeslot", class: "btn btn-primary" %>
         <% end %>
       </div>
