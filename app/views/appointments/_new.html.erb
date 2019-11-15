@@ -1,0 +1,8 @@
+<!-- Appointments#new -->
+<!-- Find me in app/views/appointments/new.html.erb -->
+<div id="appointments_modal">
+<%= simple_form_for [course, appointment] do |f| %>
+  <%= f.association :timeslot, collection: course.timeslots, label_method: :timeslot_label %>
+  <%= f.submit "Add this appointment to your calendar"%>
+<% end %>
+</div>

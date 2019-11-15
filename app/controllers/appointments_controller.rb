@@ -8,8 +8,10 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(params_create)
     @appointment.user = current_user
+    authorize @appointment
+
     if @appointment.save
-      redirect_to root_path
+      redirect_to managecourses_path
     else
       @timeslots = Timeslot.where(course_id: params[:course_id])
       render :new
@@ -18,7 +20,6 @@ class AppointmentsController < ApplicationController
   end
 
 private
-
   def params_create
     params.require('appointment').permit(:timeslot_id)
   end

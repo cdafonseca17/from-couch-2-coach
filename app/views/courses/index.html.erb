@@ -21,16 +21,25 @@
   </div>
   <% else %>
     <% @courses.each do |course| %>
-      <div class="col-4">
-        <div class="card-trip">
-          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2294&q=80" />
-          <div class="card-trip-infos">
-            <h2><%= course.category %></h2>
-            <h3><%= course.name %></h3>
-           <%= link_to "", course_path(course), class: 'card-link' %>
-         </div>
-       </div>
-     </div>
+ 
+    <div class="col-4">
+      <div class="card-trip">
+        <% if course.photo.present? %>
+        <%= cl_image_tag course.photo, crop: :fill %>
+        <% else  %>
+        <%= image_tag "home_background.jpg" %>
+        <% end %>
+        <div class="card-trip-infos">
+          <h2><%= course.category %></h2>
+          <h3><%= course.name %></h3>
+          <%= link_to "", course_path(course), class: 'card-link' %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  
    <% end %>
- <% end %>
+</div>
+
+</div>
 </div>

@@ -4,6 +4,7 @@ class CoursesController < ApplicationController
     @cities = ["Amsterdam", "London", "Paris"]
     if params[:search].nil?
       @courses = Course.all
+      @courses = policy_scope(Course)
     else
       filter_courses
     end
@@ -11,11 +12,13 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    authorize @course
   end
 
   def create
     @course = Course.new(params_create)
     @course.user = current_user
+    authorize @course
     if @course.save
       redirect_to managecourses_path
     else
@@ -25,6 +28,7 @@ class CoursesController < ApplicationController
 
   def update
     @course = Course.find(params[:id].to_i)
+    authorize @course
     if @course.update(params_update)
       redirect_to managecourses_path
     else
@@ -34,6 +38,7 @@ class CoursesController < ApplicationController
 
   def destroy
     @course = Course.find(params[:id].to_i)
+    authorize @course
     @course.destroy
     redirect_to managecourses_path
   end
@@ -41,11 +46,11 @@ class CoursesController < ApplicationController
   private
 
   def params_create
-    params.require('course').permit(:name, :category, :description, :address, :city)
+    params.require('course').permit(:name, :category, :description, :address, :city, :photo)
   end
 
   def params_update
-    params.require('course').permit(:name, :category, :description, :address, :city)
+    params.require('course').permit(:name, :category, :description, :address, :city, :photo)
   end
 
   def filter_courses
@@ -62,6 +67,6 @@ class CoursesController < ApplicationController
 
       # @courses = Course.joins(:timeslots).where('timeslots.date = ?', search_params[:date])
       @courses = Course.joins(:timeslots).where(timeslots: { date: search_params[:date] })
-    end
+    end  
   end
 end

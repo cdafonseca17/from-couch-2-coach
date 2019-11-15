@@ -1,19 +1,25 @@
 class ReviewsController < ApplicationController
+  def new
+    @course = Course.find(params[:course_id])
+    @review = Review.new
+    authorize @review
+  end
+
   def create
     @course = Course.find(params[:course_id])
     @review = Review.new(review_params)
     @review.course = @course
-    @review.save
-    redirect_to course_path(@course)
-  end
-
-  def new
-    @review = Review.new
-    @course = Course.find(params[:course_id])
+    authorize @review
+    if @review.save
+      redirect_to course_path(@course)
+    else
+      render 'courses/show'
+    end
   end
 
   def average_rating
     @course = Course.find(params[:course_id])
+    authorize @review
     total_stars = @course.reviews.map do |review|
       review.stars
     end
