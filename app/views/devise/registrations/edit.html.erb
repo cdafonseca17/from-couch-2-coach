@@ -1,58 +1,85 @@
-<h2>Profile info </h2>
+ <!-- <img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80"> -->
+<%= content_for :custom_body_class, 'background-grey-login' %>
+  <div class="devise-form-container">
+    <!-- <div class="row justify-content-center"> -->
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-8">
+        <h2>Edit my profile</h2>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+            <div class="form-inputs">
+              <%= f.input :email, required: true, autofocus: true %>
 
-    <div>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+              <% end %>
 
-    <%= f.input :first_name, label: 'First name', error: 'First name is mandatory, please specify one',
-        required: true,
-        autofocus: true,
-        input_html: { autocomplete: "" }%>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <%= f.input :first_name, label: 'First name', error: 'First name is mandatory, please specify one',
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "" }%>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <%= f.input :last_name,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "" }%>
+                  </div>
+                </div>
 
-    <%= f.input :last_name,
-        required: true,
-        autofocus: true,
-        input_html: { autocomplete: "" }%>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <%= f.input :city,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "" }%>
+                    </div>
 
-    <%= f.input :city,
-        required: true,
-        autofocus: true,
-        input_html: { autocomplete: "" }%>
+                    <div class="form-group col-md-6">
+                      <%= f.input :gender, label: 'Gender: ', collection: ["Male", "Female", "Rather not say"] %>
+                    </div>
+                  </div>
 
-    <%= f.input :gender, label: 'Gender: ', collection: ["Male", "Female", "Rather not say"] %>
+                  <!-- <div class="form-row"> -->
+                    <%= f.input :password,
+                                hint: "leave it blank if you don't want to change it",
+                                required: false,
+                                input_html: { autocomplete: "new-password" } %>
+                    <%= f.input :password_confirmation,
+                                required: false,
+                                input_html: { autocomplete: "new-password" } %>
+                    <%= f.input :current_password,
+                                hint: "we need your current password to confirm your changes",
+                                required: true,
+                                input_html: { autocomplete: "current-password" } %>
+                  <!-- </div> -->
 
+                  <!-- <div class="form-row"> -->
+                  <%= f.input :photo %>
+                  <%= f.input :photo_cache, as: :hidden%>
+                  <!-- </div> -->
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden%>
-
+                  <div class="form-actions">
+                    <%= f.button :submit, "Save changes", class: 'save-btn btn-block' %>
+                  </div>
+            <% end %>
+    </div>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
+<!-- <div> -->
 
+
+<!-- <div>
 <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Back", :back, {:style=>'color:#;'} %>
+</div> -->
+
